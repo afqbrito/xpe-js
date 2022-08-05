@@ -19,21 +19,26 @@ function determineRange(imc) {
   var range = 'inválido';
 
   if (imc > 40) {
-    range = 'Obesidade grau III'
+    // acima de 40,0
+    range = 'Obesidade grau III';
   } else if (imc >= 35) {
-    range = 'Obesidade grau II'
+    // entre 35,0 e 40,0
+    range = 'Obesidade grau II';
   } else if (imc >= 30) {
-    range = 'Obesidade grau I'
+    // entre 30,0 e 34,9
+    range = 'Obesidade grau I';
   } else if (imc >= 25) {
-    range = 'Acima do peso'
+    // entre 25,0 e 29,9
+    range = 'Acima do peso';
   } else if (imc >= 18.5) {
-    range = 'Peso normal'
+    // entre 18,5 e 24,9
+    range = 'Peso normal';
   } else if (imc >= 17) {
-    range = 'Abaixo do peso'
+    // entre 17,0 e 18,4
+    range = 'Abaixo do peso';
   } else if (imc >= 16) {
-    range = 'Obesidade grau II'
-  } else if (imc >= 35) {
-    range = 'Obesidade grau II'
+    // entre 16,0 e 16,9
+    range = 'Muito abaixo do peso';
   }
 
   return range;
@@ -51,7 +56,10 @@ function handleButtonClick() {
   var imc = calculateImc(weight, height);
   var formattedImc = imc.toFixed(2).replace('.', ',');
 
+  var range = determineRange(imc);
+
   imcResult.textContent = formattedImc;
+  rangeResult.textContent = range;
 }
 
 start();
